@@ -14,12 +14,18 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        currentFragment = DogListFragment.getInstance();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.fragmentHolder, currentFragment, "DOGLIST")
-                .addToBackStack("DOGLIST")
-                .commit();
+
+        if(savedInstanceState==null){
+            currentFragment = DogListFragment.getInstance();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentHolder, currentFragment, "DOGLIST")
+                    .addToBackStack("DOGLIST")
+                    .commit();
+        }else {
+            currentFragment = getSupportFragmentManager().findFragmentByTag("DOGLIST");
+        }
+
     }
 
     @Override
@@ -27,7 +33,8 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
         DogModel dogModel = (DogModel)object;
         currentFragment = DogDetailFragment.getInstance(dogModel);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentHolder, currentFragment)
+                .replace(R.id.fragmentHolder, currentFragment, "DOGDETAIL")
+                .addToBackStack("DOGDETAIL")
                 .commit();
     }
 
@@ -37,6 +44,11 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentHolder, currentFragment, "DOGLIST")
+                .addToBackStack("DOGLIST")
                 .commit();
+    }
+
+    private void getSavedInstance(){
+
     }
 }

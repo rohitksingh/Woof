@@ -29,6 +29,9 @@ public class DogDetailFragment extends Fragment {
         return fragment;
     }
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_dog_detail, parent, false);

@@ -46,6 +46,7 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
     public void onBindViewHolder(@NonNull DogViewHolder holder, int position) {
 
         final DogModel dogModel = dogList.get(position);
+
         Glide.with(context)
                 .load(dogModel.getImageUrl())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

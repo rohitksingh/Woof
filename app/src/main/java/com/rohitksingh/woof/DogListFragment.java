@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -31,7 +30,7 @@ public class DogListFragment extends Fragment implements PaginationCallBack{
     private RecyclerView rv;
     private StaggeredGridLayoutManager llm;
     private DogListAdapter adapter;
-    private List<DogModel> dogList;
+    private ArrayList<DogModel> dogList;
     private Context context;
 
     public static DogListFragment getInstance(){
@@ -39,11 +38,23 @@ public class DogListFragment extends Fragment implements PaginationCallBack{
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("STATE_COUNTER", dogList);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        dogList = new ArrayList<>();
+        if(savedInstanceState==null){
+            dogList = new ArrayList<>();
+        }else {
+            dogList = (ArrayList<DogModel>) savedInstanceState.getSerializable("STATE_COUNTER");
+        }
         adapter = new DogListAdapter(context, dogList, this);
-        getListFromServer();
+        if(savedInstanceState==null){
+            getListFromServer();
+        }
     }
 
     @Override
