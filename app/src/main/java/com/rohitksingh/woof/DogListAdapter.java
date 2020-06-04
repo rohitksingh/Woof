@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -21,6 +24,13 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
         this.dogList = dogList;
     }
 
+    public void updateDataSet(List<DogModel> newResult){
+        if(newResult!=null){
+            dogList = newResult;
+        }
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public DogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,6 +41,11 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
     @Override
     public void onBindViewHolder(@NonNull DogViewHolder holder, int position) {
         DogModel dogModel = dogList.get(position);
+        Glide.with(context)
+                .load(dogModel.getImageUrl())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
+                .into(holder.dogImage);
     }
 
     @Override
