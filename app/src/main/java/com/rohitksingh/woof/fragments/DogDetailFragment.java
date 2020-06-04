@@ -1,4 +1,4 @@
-package com.rohitksingh.woof;
+package com.rohitksingh.woof.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.rohitksingh.woof.DogModel;
+import com.rohitksingh.woof.R;
+import com.rohitksingh.woof.callbacks.BackButtonCallback;
 
 import androidx.fragment.app.Fragment;
 
@@ -28,9 +31,6 @@ public class DogDetailFragment extends Fragment {
         fragment.setArguments(bundle);
         return fragment;
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
