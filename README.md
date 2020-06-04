@@ -14,10 +14,6 @@ You can find following implementation in this project.
  - Rest Calls (Volley)
  - Image Rendering (Glide)
  - JSON Parsing
- - Implicit, Explicit Intents 
- - Android 6.0 Runtime Permission
- - View Binder (ButterKnife)
- - Transition API
 
  </br></br>
 ## About author
