@@ -2,8 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:padding="20sp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        />
     <ImageView
         android:id="@+id/dogImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/back"
+        />
 </RelativeLayout>

@@ -43,7 +43,6 @@ public class DogListFragment extends Fragment implements PaginationCallBack{
         super.onCreate(savedInstanceState);
         dogList = new ArrayList<>();
         adapter = new DogListAdapter(context, dogList, this);
-        llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         getListFromServer();
     }
 
@@ -51,6 +50,7 @@ public class DogListFragment extends Fragment implements PaginationCallBack{
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_dog_list, parent, false);
         rv = view.findViewById(R.id.rv);
+        llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         rv.setLayoutManager(llm);
         rv.setAdapter(adapter);
         return view;

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 
-public class MainActivity extends AppCompatActivity implements ItemClickCallBack{
+public class MainActivity extends AppCompatActivity implements ItemClickCallBack, BackButtonCallback{
 
     private Fragment currentFragment;
 
@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragmentHolder, currentFragment, "DOGLIST")
+                .addToBackStack("DOGLIST")
                 .commit();
     }
 
@@ -27,6 +28,15 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
         currentFragment = DogDetailFragment.getInstance(dogModel);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentHolder, currentFragment)
+                .commit();
+    }
+
+    @Override
+    public void backButtonClicked() {
+        currentFragment = getSupportFragmentManager().findFragmentByTag("DOGLIST");
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentHolder, currentFragment, "DOGLIST")
                 .commit();
     }
 }
