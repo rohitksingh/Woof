@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-public class DogListFragment extends Fragment {
+public class DogListFragment extends Fragment implements PaginationCallBack{
 
     private RecyclerView rv;
     private StaggeredGridLayoutManager llm;
@@ -35,7 +35,6 @@ public class DogListFragment extends Fragment {
     private Context context;
 
     public static DogListFragment getInstance(){
-        Log.d("IMAGELIST", "CONS");
         return new DogListFragment();
     }
 
@@ -43,7 +42,7 @@ public class DogListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         dogList = new ArrayList<>();
-        adapter = new DogListAdapter(context, dogList);
+        adapter = new DogListAdapter(context, dogList, this);
         llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         getListFromServer();
     }
@@ -54,7 +53,6 @@ public class DogListFragment extends Fragment {
         rv = view.findViewById(R.id.rv);
         rv.setLayoutManager(llm);
         rv.setAdapter(adapter);
-        Log.d("IMAGELIST", "This");
         return view;
     }
 
@@ -94,9 +92,8 @@ public class DogListFragment extends Fragment {
         requestQueue.add(request);
     }
 
-
-    private void getImages(int pageNumber){
-
-
+    @Override
+    public void loadMore() {
+        getListFromServer();
     }
 }

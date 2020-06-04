@@ -18,10 +18,12 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
 
     private Context context;
     private List<DogModel> dogList;
+    private PaginationCallBack paginationCallBack;
 
-    public DogListAdapter(Context context, List<DogModel> dogList) {
+    public DogListAdapter(Context context, List<DogModel> dogList, PaginationCallBack paginationCallBack) {
         this.context = context;
         this.dogList = dogList;
+        this.paginationCallBack = paginationCallBack;
     }
 
     public void updateDataSet(List<DogModel> newResult){
@@ -46,6 +48,10 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(holder.dogImage);
+
+        if(position+1==dogList.size()){
+            paginationCallBack.loadMore();
+        }
     }
 
     @Override

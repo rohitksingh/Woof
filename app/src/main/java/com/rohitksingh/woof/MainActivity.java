@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Fragment fragment = DogListFragment.getInstance();
-        Log.d("IMAGELIST", "Acticity");
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragmentHolder, fragment, "DOGLIST")
