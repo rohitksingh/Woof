@@ -1,6 +1,8 @@
 package com.rohitksingh.woof;
 
-public class DogModel {
+import java.io.Serializable;
+
+public class DogModel implements Serializable {
 
     private String imageUrl;
 

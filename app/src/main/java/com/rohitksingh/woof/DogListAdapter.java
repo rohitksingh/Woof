@@ -19,11 +19,13 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
     private Context context;
     private List<DogModel> dogList;
     private PaginationCallBack paginationCallBack;
+    private ItemClickCallBack itemClickCallBack;
 
     public DogListAdapter(Context context, List<DogModel> dogList, PaginationCallBack paginationCallBack) {
         this.context = context;
         this.dogList = dogList;
         this.paginationCallBack = paginationCallBack;
+        this.itemClickCallBack = (ItemClickCallBack)context;
     }
 
     public void updateDataSet(List<DogModel> newResult){
@@ -42,12 +44,20 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
 
     @Override
     public void onBindViewHolder(@NonNull DogViewHolder holder, int position) {
-        DogModel dogModel = dogList.get(position);
+
+        final DogModel dogModel = dogList.get(position);
         Glide.with(context)
                 .load(dogModel.getImageUrl())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(holder.dogImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClickCallBack.onItemClicked(dogModel);
+            }
+        });
 
         if(position+1==dogList.size()){
             paginationCallBack.loadMore();
