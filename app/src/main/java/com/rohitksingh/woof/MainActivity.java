@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragmentHolder, currentFragment, "DOGLIST")
-                    .addToBackStack("DOGLIST")
                     .commit();
         }
 
@@ -56,12 +55,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
 
     @Override
     public void backButtonClicked() {
-        currentFragment = getSupportFragmentManager().findFragmentByTag("DOGLIST");
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentHolder, currentFragment, "DOGLIST")
-                .addToBackStack("DOGLIST")
-                .commit();
+        getSupportFragmentManager().popBackStack();
     }
 
 }
