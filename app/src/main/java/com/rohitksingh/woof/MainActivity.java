@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickCallBack
         DogModel dogModel = (DogModel)object;
         currentFragment = DogDetailFragment.getInstance(dogModel);
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top, R.anim.slide_in_top, R.anim.slide_out_bottom)
                 .replace(R.id.fragmentHolder, currentFragment, "DOGDETAIL")
                 .addToBackStack("DOGDETAIL")
                 .commit();
