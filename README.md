@@ -1,7 +1,6 @@
 # Woof - Learn Android Fragments the right way
 
-![ezgif com-resize (5)](https://user-images.githubusercontent.com/11274840/83814103-67bb4f00-a673-11ea-8a61-bc9196a45330.png)
-![ezgif com-resize (6)](https://user-images.githubusercontent.com/11274840/83814064-64c05e80-a673-11ea-9015-2a151fc1984d.png)
+<img align="center" width="810" alt="woof3" src="https://user-images.githubusercontent.com/11274840/84585166-a498eb80-adc1-11ea-913e-8fe961260250.png">
 
 # Implementations
 You can find following implementation in this project.
