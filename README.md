@@ -1,5 +1,7 @@
 # Woof - Learn Android Fragments the right way
 
+<img align="centre" width="360" alt="woof3" src="https://user-images.githubusercontent.com/11274840/84585200-140edb00-adc2-11ea-80bd-9c65c0ea45b0.jpg">
+
 <img align="center" width="810" alt="woof3" src="https://user-images.githubusercontent.com/11274840/84585166-a498eb80-adc1-11ea-913e-8fe961260250.png">
 
 # Implementations
